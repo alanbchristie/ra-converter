@@ -176,7 +176,7 @@ utility directly: -
 
     $ python -m venv ~/.venv/ra-converter
     $ source ~/.venv/ra-converter/bin/activate
-    $ python ra-converter.py
+    $ python ra_converter.py
 
 Enter the RA co-ordinate of your object, and the code will use the current time
 and present you with the _adjusted_ co-ordinate that you need to use
