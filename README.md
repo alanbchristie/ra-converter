@@ -1,4 +1,7 @@
 # Rapid location of Right Ascension (RA) objects
+
+[![lint](https://github.com/alanbchristie/ra-converter/actions/workflows/lint.yaml/badge.svg)](https://github.com/alanbchristie/ra-converter/actions/workflows/lint.yaml)
+
 A trick to rapidly locate celestial objects using a telescope and a fixed
 [Right Ascension] (RA) axis.
 
