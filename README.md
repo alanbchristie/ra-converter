@@ -63,21 +63,19 @@ the RA coordinate of any position in the sky you know it's going to be the same
 value every 24 hours.
 
 So I got to thinking ... if you set the RA axis ring once (and you know what
-time it was when you did it) then, given the current time, you can use that
-"fixed" location to calculate the RA co-ordinate offset of any object.
+time it was when you did it) you can use any new time to calculate an _offset_
+that can be used against your fixed axis.
 
 And this is the trick I employ here.
 
-The result is a method that, for any given viewing location
-(longitude to be precise) you just need to calibrate the telescope's RA axis
-once. Then, given a time of day, you can calculate a co-ordinate
-*offset* to apply to your scale for any object you want to observe.
+The result is a method where, for any given viewing location
+(any longitude), you simply need to calibrate the telescope's RA axis
+once, during the day when it's convenient. Then, given a new time of day
+and _target_ RA co-ordinate, you calculate a co-ordinate *offset* using the
+time and apply that to your scale. You don't need to re-calibrate the RA ring
+as long as you observe the sky from the same location (longitude).
 
-This approach avoids me having to continually adjust the RA scale
-as the night progresses. More conveniently, I can even set the scale during
-the day in full sun and then use the telescope any night after that.
-
-## Calibrating the telescope RA axis
+## Calibrating the RA axis
 **Step 1**
 
 Set your telescope up at your viewing location. You will need to follow the
@@ -145,25 +143,25 @@ That's it.
 Now, to locate any celestial object, you just need to know the
 object's RA co-ordinate and the current time of day (in UTC/GMT/Zulu time).
 
-**Step 6**
-
-Locate a celestial object using the object's RA co-ordinate and your
-fixed RA axis.
+## Locating objects using the fixed RA calibration
+You've calibrated your RA axis, sometime earlier, during the day, and now
+you want to locate an object.
 
 Let's say you want to locate **Capella** in the constellation of [Auriga].
+
 You need to turn your telescope to `5h 16m` (the RA co-ordinate
-of **Capella**). But, as your RA axis is calibrated for _midnight_ you have to
-first adjust the co-ordinate for the current time (UTC).
+of **Capella**). But, as your RA axis is statically calibrated for _midnight_
+you first have to adjust the target co-ordinate using the current time (UTC).
 
-So, if it's 11PM (UTC) when you're observing **Capella** then _your_ telescope
-will need to be rotated on the RA axis to `5h 16m` plus `23h`,
-which is `4h 16m`.
+So, if it's 11PM (UTC) when you want to look at **Capella** then add `23h`
+(11PM) to your target co-ordinate (`5h 16m`). This yields the new (corrected)
+value `4h 16m`.
 
-Rotate your telescope to `4h 16m` and (with the right declination) you should
-be pointing at your chosen object.
+Rotate your telescope to `4h 16m` and (with the correct declination) you should
+be looking at **Capella**.
 
-In summary - a handy trick - rapid location of celestial objects with a
-fixed RA axis!
+In summary - it's a handy trick - rapid location of celestial objects without
+having to adjust the RA axis!
 
 ## Running the utility
 You can of course, in your head, add the current UTC time to your target
