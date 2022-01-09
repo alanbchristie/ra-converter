@@ -197,7 +197,8 @@ which, for us, is `4h56m`.
   your daily offset returns to zero.
 
 In summary - we have a handy trick - the rapid location of
-objects using celestial coordinates without adjusting the RA axis!
+objects using celestial coordinates without all the fiddly adjusting the RA
+axis - especially on cheaper telescopes!
 
 ## Running the software utility
 You can of course, in your head, add the current time to your target
