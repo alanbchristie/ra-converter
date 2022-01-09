@@ -189,8 +189,8 @@ Rotate your telescope to `4h16m` and, with the correct declination
 **An example on days after calibration**
 
 If it's 11PM 10 days have elapsed since you calibrated the telescope add
-`23h` plus `4 * 10` to the target co-ordinate, i.e. `5h16m plus 23h40m`,
-which is `4h56m`.
+`23h` plus `10 x 4` to the target co-ordinate, i.e. `5h16m plus 23h40m`,
+which, for us, is `4h56m`.
 
 > The number of days you add is relative to the date and month of calibration,
   i.e. the value's range is 0 to 359. Each year, on the calibration date
