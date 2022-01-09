@@ -145,7 +145,7 @@ from the calibrated viewing location, it will be pointing at `RA 6h 47m`
 
 **Step 5**
 
-Now it's time to perform that one-time adjustment of your telescope's RA axis.
+Now it's time to adjust your telescope's RA axis.
 
 Using the midnight co-ordinate you calculated above, set your RA axis
 to that value. In our case it's `6h 47m`.
