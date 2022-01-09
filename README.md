@@ -116,7 +116,7 @@ screenshot illustrates)...
 ![My RA axis](images/IMG_4010.jpg)
 
 In this example the current RA co-ordinate of the South compass point is
-(approximately) `14h 47m`.
+(approximately) `14h47m`.
 
 **Step 4**
 
@@ -124,10 +124,10 @@ Adjust the RA co-ordinate to the value that would be found at the South
 compass point if it were midnight, i.e. subtract the current time from your
 current reading.
 
-In the above example the RA co-ordinate of South is `14h 47m` so,
+In the above example the RA co-ordinate of South is `14h47m` so,
 if the measurement was taken at 08:00 subtract 8 hours
 from the co-ordinate. In our example this would result in a
-value of `6h 47m`.
+value of `6h47m`.
 
 > That's the RA-co-ordinate of **South**, at your location, at midnight.
 
@@ -148,7 +148,7 @@ from the calibrated viewing location, it will be pointing at `RA 6h 47m`
 Now it's time to adjust your telescope's RA axis.
 
 Using the midnight co-ordinate you calculated above, set your RA axis
-to that value. In our case it's `6h 47m`.
+to that value. In our case it's `6h47m`.
 
 ![My RA axis](images/IMG_4013.jpg)
 
@@ -165,23 +165,23 @@ you want to locate an object.
 Let's say you want to locate **Capella** in the constellation of [Auriga].
 
 You look up the object's co-ordinate and realise you need to turn your telescope
-to `5h 16m` (the RA co-ordinate of **Capella**). But, as your RA axis is
+to `5h16m` (the RA co-ordinate of **Capella**). But, as your RA axis is
 statically calibrated for _midnight_ you can't use it directly. Instead,
 you have to adjust the target co-ordinate using the current time.
 As the axis uses hours and minutes as the measurement this is easy.
 
-If it's 11PM add `23h` to your target co-ordinate (`5h 16m`).
-This yields the new value `4h 16m`, which is the corrected value for your
+If it's 11PM add `23h` to your target co-ordinate (`5h16m`).
+This yields the new value `4h16m`, which is the corrected value for your
 fixed RA axis.
 
-Rotate your telescope to `4h 16m` and, with the correct declination
+Rotate your telescope to `4h16m` and, with the correct declination
 (`+45 degrees 59 minutes`) you should be (roughly) centred on **Capella**.
 
 In summary - we have a handy trick - the rapid location of
 objects using celestial coordinates without needing to adjust the RA axis!
 
 ## Running the software utility
-You can of course, in your head, add the current UTC time to your target
+You can of course, in your head, add the current time to your target
 value. 
 
 If you can do that in your head than all the better, because you won't need
