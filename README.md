@@ -1,4 +1,4 @@
-# Rapid location of Right Ascension (RA) objects
+# Fixed-axis location of Right Ascension (RA) objects
 
 [![lint](https://github.com/alanbchristie/ra-converter/actions/workflows/lint.yaml/badge.svg)](https://github.com/alanbchristie/ra-converter/actions/workflows/lint.yaml)
 
@@ -21,6 +21,12 @@ You will need: -
   RA co-ordinates (I use [SkyView] on an iPhone 11)
 - A compass (or smartphone with a compass)
 
+> This trick is based on the fact that although the celestial co-ordinates
+  do change over time (due to [Axial precession]) that change is so slow you
+  don't really have to adjust your reference point for many years. Your
+  RA axis is probably only graduated every 5 or 10 minutes anyway making
+  adjustments even less likely.
+
 ## Background
 I have my first telescope, but I'm just learning.
 
@@ -35,10 +41,13 @@ mount.
 ![My RA axis](images/IMG_4005.jpg)
 
 Unfortunately turning the disk on this model turns out to be quite fiddly -
-it's not on bearings, is not lubricated, and it often gets stuck!
+it's not on bearings, is not lubricated, and it often gets stuck! And if it
+takes you 10 minutes to actually set the axis you're 10 minutes out on the
+RA Axis - which is a significant deviation from where it is by the time you're
+ready. And you have to keep doing it as the night progresses?
 
 So I sat there, thinking ... _"Hold on! I've got to do this every night?
-In the dark?"_.
+In the dark? All night?"_.
 
 I started to realise that this was going to turn out to be really annoying.
 
@@ -48,14 +57,13 @@ just seemed, to me, to be too complicated.
 
 It relies on a number of actions: -
 
-- First ... you need to know your stars
-- And ... you have to be able to see your chosen star. You might not be able to
-  because of an obstruction (tree/house) or cloud cover
-- Then .... you need to know the star's RA coordinate
-- And ... you have to do this when it's dark
-  (because you can't see many stars when the Sun's shining!)
-- And ... you have to keep adjusting the ring as the night passes if you want
-  to locate another object (because the starts are constantly moving!)
+1. You need to know your stars, at least one, probably more including their
+   RA values
+2. You have to be able to see your chosen star. You might not be able to
+   because of an obstruction (tree/house) or cloud cover
+3. It needs to be dark - you can't see many stars when the Sun's shining!
+4. You have to keep adjusting the RA ring as the night passes
+   (because RA 0h 0m is moving relative to your location)
 
 As a software engineer with a passion for automation I thought
 "There has to be a better (faster) way". After all, once you know
@@ -105,10 +113,10 @@ Take a note of the current time and the RA co-ordinate of the southern compass
 point (positioning the reticule a little more accurately than this quick
 screenshot illustrates)...
 
-![My RA axis](images/IMG_4004.jpg)
+![My RA axis](images/IMG_4010.jpg)
 
 In this example the current RA co-ordinate of the South compass point is
-(approximately) `15h 47m`.
+(approximately) `14h 47m`.
 
 **Step 4**
 
@@ -116,15 +124,16 @@ Adjust the RA co-ordinate to the value that would be found at the South
 compass point if it were midnight, i.e. subtract the current time from your
 current reading.
 
-In the above example the RA co-ordinate of South is `15h 47m` so,
-if the measurement was taken at 09:05 (in UTC/GMT/Zulu time) subtract 9 hours
-and 5 minutes from the co-ordinate. In our example this would result in a
-value of `6h 42m`.
+In the above example the RA co-ordinate of South is `14h 47m` so,
+if the measurement was taken at 08:00 (in UTC/GMT/Zulu time) subtract 8 hours
+from the co-ordinate. In our example this would result in a
+value of `6h 47m`.
 
 > That's the RA-co-ordinate of **South**, at your location, at midnight.
 
-It's a constant ... South, where you are, in this example, will always
-be `6h 42m` at midnight (00:00).
+It's essentially a constant ... if your telescope is pointing directly South,
+from the calibrated viewing location, it will be pointing at `RA 6h 47m`
+(in our example) at midnight UTC (00:00).
 
 > You could do all this at midnight and not do the maths, but at midnight
   it's dark, cold and unnecessary.
@@ -134,9 +143,9 @@ be `6h 42m` at midnight (00:00).
 Now it's time to perform that one-time adjustment of your telescope's RA axis.
 
 Using the midnight co-ordinate you calculated above, set your RA axis
-to that value. In our case it would be `6h 42m`.
+to that value. In our case it's `6h 47m`.
 
-![My RA axis](images/IMG_4006.jpg)
+![My RA axis](images/IMG_4013.jpg)
 
 That's it.
 
@@ -144,31 +153,33 @@ Now, to locate any celestial object, you just need to know the
 object's RA co-ordinate and the current time of day (in UTC/GMT/Zulu time).
 
 ## Locating objects using the fixed RA calibration
-You've calibrated your RA axis, sometime earlier, during the day, and now
+You've calibrated your RA axis, sometime during the day, and now
 you want to locate an object.
 
 Let's say you want to locate **Capella** in the constellation of [Auriga].
 
-You need to turn your telescope to `5h 16m` (the RA co-ordinate
-of **Capella**). But, as your RA axis is statically calibrated for _midnight_
-you first have to adjust the target co-ordinate using the current time (UTC).
+You look up the object's co-ordinate and realise you need to turn your telescope
+to `5h 16m` (the RA co-ordinate of **Capella**). But, as your RA axis is
+statically calibrated for _midnight_ you can;'t use it directly. Instead,
+you have to adjust the target co-ordinate using the current time (UTC).
+As the axis uses Hours and Minutes as the measurement this is easy.
 
-So, if it's 11PM (UTC) when you want to look at **Capella** then add `23h`
-(11PM) to your target co-ordinate (`5h 16m`). This yields the new (corrected)
-value `4h 16m`.
+If it's 11PM (UTC) add `23h` to your target co-ordinate (`5h 16m`).
+This yields the new value `4h 16m`, which is the corrected value for your
+fixed RA axis.
 
-Rotate your telescope to `4h 16m` and (with the correct declination) you should
-be looking at **Capella**.
+Rotate your telescope to `4h 16m` and, with the correct declination
+(`+45 degrees 59 minutes`) you should be (roughly) centred on **Capella**.
 
-In summary - it's a handy trick - rapid location of celestial objects without
-having to adjust the RA axis!
+In summary - what we have here is a handy trick - the rapid location of
+objects using celestial coordinates without needing to adjust the RA axis!
 
-## Running the utility
+## Running the software utility
 You can of course, in your head, add the current UTC time to your target
-value.
+value. 
 
-If you can do that in your head than all the better (because you won't need
-to run this code). But, if you aren't good at mental arithmetic this
+If you can do that in your head than all the better, because you won't need
+to run this software. But, if you aren't good at mental arithmetic this
 code will help you.
 
 Clone the repository and, from a suitable Python environment, run the
@@ -185,6 +196,7 @@ on your telescope.
 ---
 
 [auriga]: https://en.wikipedia.org/wiki/Auriga_(constellation)#/media/File:Auriga_IAU.svg
+[axial precession]: https://en.wikipedia.org/wiki/Axial_precession
 [equatorial mount]: https://en.wikipedia.org/wiki/Equatorial_mount
 [right ascension]: https://en.wikipedia.org/wiki/Right_ascension
 [skyview]: https://apps.apple.com/us/app/skyview/id404990064
