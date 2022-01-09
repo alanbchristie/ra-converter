@@ -14,7 +14,7 @@ _FOUR_MINUTES: timedelta = timedelta(minutes=4)
 _RA_AGE_DAYS: int = 0
 _RA_AGE = input("Days since RA calibration (days) [0]: ")
 if _RA_AGE:
-    _RA_AGE_DAYS + int(_RA_AGE)
+    _RA_AGE_DAYS = int(_RA_AGE)
 
 # Ask the user the RA coordinate they want to locate (the 'target')...
 _RA_TARGET = input("RA target coordinate (HhMm): ")
