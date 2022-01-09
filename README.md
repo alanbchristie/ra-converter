@@ -125,7 +125,7 @@ compass point if it were midnight, i.e. subtract the current time from your
 current reading.
 
 In the above example the RA co-ordinate of South is `14h 47m` so,
-if the measurement was taken at 08:00 (in UTC/GMT/Zulu time) subtract 8 hours
+if the measurement was taken at 08:00 subtract 8 hours
 from the co-ordinate. In our example this would result in a
 value of `6h 47m`.
 
@@ -133,7 +133,12 @@ value of `6h 47m`.
 
 It's essentially a constant ... if your telescope is pointing directly South,
 from the calibrated viewing location, it will be pointing at `RA 6h 47m`
-(in our example) at midnight UTC (00:00).
+(in our example) at midnight.
+
+> Remember, if you're in a location that observes Daylight Saving Time,
+  you will want to adjust your telescope RA axis every time it changes
+  (every 6 months or so), unless you want to or are able to use UTC
+  as your "clock".
 
 > You could do all this at midnight and not do the maths, but at midnight
   it's dark, cold and unnecessary.
@@ -150,7 +155,8 @@ to that value. In our case it's `6h 47m`.
 That's it.
 
 Now, to locate any celestial object, you just need to know the
-object's RA co-ordinate and the current time of day (in UTC/GMT/Zulu time).
+object's RA co-ordinate and the current time of day (remembering to account
+for Daylight Saving Time as mentioned earlier, if you need to).
 
 ## Locating objects using the fixed RA calibration
 You've calibrated your RA axis, sometime during the day, and now
@@ -160,18 +166,18 @@ Let's say you want to locate **Capella** in the constellation of [Auriga].
 
 You look up the object's co-ordinate and realise you need to turn your telescope
 to `5h 16m` (the RA co-ordinate of **Capella**). But, as your RA axis is
-statically calibrated for _midnight_ you can;'t use it directly. Instead,
-you have to adjust the target co-ordinate using the current time (UTC).
-As the axis uses Hours and Minutes as the measurement this is easy.
+statically calibrated for _midnight_ you can't use it directly. Instead,
+you have to adjust the target co-ordinate using the current time.
+As the axis uses hours and minutes as the measurement this is easy.
 
-If it's 11PM (UTC) add `23h` to your target co-ordinate (`5h 16m`).
+If it's 11PM add `23h` to your target co-ordinate (`5h 16m`).
 This yields the new value `4h 16m`, which is the corrected value for your
 fixed RA axis.
 
 Rotate your telescope to `4h 16m` and, with the correct declination
 (`+45 degrees 59 minutes`) you should be (roughly) centred on **Capella**.
 
-In summary - what we have here is a handy trick - the rapid location of
+In summary - we have a handy trick - the rapid location of
 objects using celestial coordinates without needing to adjust the RA axis!
 
 ## Running the software utility
@@ -197,6 +203,7 @@ on your telescope.
 
 [auriga]: https://en.wikipedia.org/wiki/Auriga_(constellation)#/media/File:Auriga_IAU.svg
 [axial precession]: https://en.wikipedia.org/wiki/Axial_precession
+[daylight saving time]: https://en.wikipedia.org/wiki/Daylight_saving_time
 [equatorial mount]: https://en.wikipedia.org/wiki/Equatorial_mount
 [right ascension]: https://en.wikipedia.org/wiki/Right_ascension
 [skyview]: https://apps.apple.com/us/app/skyview/id404990064
