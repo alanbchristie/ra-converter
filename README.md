@@ -6,11 +6,11 @@ A trick to rapidly locate celestial objects using a telescope and a fixed
 [Right Ascension] (RA) axis.
 
 These instructions and the accompanying Python 3 utility, allow you to avoid
-having to continually calibrate a telescope's RA axis for a given viewing
+having to continually calibrate a telescope's RA axis once for a given viewing
 location.
 
-When a telescope is calibrated as described you just have to add the current
-time of day (UTC) to any desired RA co-ordinate in order to obtain a value
+When a telescope is calibrated as described you just have to add an adjusted
+viewing time to any desired RA co-ordinate in order to obtain a value
 on the telescope's fixed (one-time-calibrated) RA axis. i.e. the axis does not
 need to be altered while the viewer remains at a given location.
 
@@ -22,10 +22,7 @@ You will need: -
 - A compass (or smartphone with a compass)
 
 > This trick is based on the fact that although the celestial co-ordinates
-  do change over time (due to [Axial precession]) that change is so slow you
-  don't really have to adjust your reference point for many years. Your
-  RA axis is probably only graduated every 5 or 10 minutes anyway making
-  adjustments even less likely.
+  do change over time (due to [Axial precession]).
 
 ## Background
 I have my first telescope, but I'm just learning.
@@ -78,10 +75,11 @@ And this is the trick I employ here.
 
 The result is a method where, for any given viewing location
 (any longitude), you simply need to calibrate the telescope's RA axis
-once, during the day when it's convenient. Then, given a new time of day
-and _target_ RA co-ordinate, you calculate a co-ordinate *offset* using the
-time and apply that to your scale. You don't need to re-calibrate the RA ring
-as long as you observe the sky from the same location (longitude).
+once, during the day when it's convenient and remember the date you did it.
+Then, given a new time of day and _target_ RA co-ordinate, you calculate a
+co-ordinate *offset* using the time and apply that to your scale. You don't
+need to re-calibrate the RA ring as long as you observe the sky from the same
+location (longitude).
 
 ## Calibrating the RA axis
 **Step 1**
@@ -129,11 +127,21 @@ if the measurement was taken at 08:00 subtract 8 hours
 from the co-ordinate. In our example this would result in a
 value of `6h47m`.
 
-> That's the RA-co-ordinate of **South**, at your location, at midnight.
+> That's the RA-co-ordinate of **South**, at your location, at midnight
 
-It's essentially a constant ... if your telescope is pointing directly South,
-from the calibrated viewing location, it will be pointing at `RA 6h 47m`
-(in our example) at midnight.
+Record the RA co-ordinate (`6h47m`) and the current date
+(i.e. `4th Jan` in my case).
+
+The RA co-ordinate is essentially a constant ... if your telescope is
+pointing directly South, from the same viewing location, it will be pointing
+at `RA 6h47m` (in our example) at midnight on the same date every year
+(`4th Jan` oin my case).
+
+Be aware that the RA coordinate will advance by approximately 4 minutes
+every day (because the rotation of the earth actually only takes `23h56m`).
+In a month the RA co-ordinate seen directly South will have advanced by
+approximately 2 hours. After a year `RA 6h47m` will again be directly south
+of your location with leap-years compensating for the 4-minute drift.
 
 > Remember, if you're in a location that observes Daylight Saving Time,
   you will want to adjust your telescope RA axis every time it changes
@@ -159,26 +167,37 @@ object's RA co-ordinate and the current time of day (remembering to account
 for Daylight Saving Time as mentioned earlier, if you need to).
 
 ## Locating objects using the fixed RA calibration
-You've calibrated your RA axis, sometime during the day, and now
-you want to locate an object.
-
 Let's say you want to locate **Capella** in the constellation of [Auriga].
 
 You look up the object's co-ordinate and realise you need to turn your telescope
 to `5h16m` (the RA co-ordinate of **Capella**). But, as your RA axis is
-statically calibrated for _midnight_ you can't use it directly. Instead,
-you have to adjust the target co-ordinate using the current time.
-As the axis uses hours and minutes as the measurement this is easy.
+statically calibrated for _midnight_ on a particular day you can't use it
+directly. Instead, you have to adjust the target co-ordinate using the
+current time and the relative number of days that have elapsed since you last
+calibrated the telescope. As the axis uses hours and minutes as the
+measurement this is (relatively) easy.
 
-If it's 11PM add `23h` to your target co-ordinate (`5h16m`).
-This yields the new value `4h16m`, which is the corrected value for your
-fixed RA axis.
+**An example for the day of calibration**
+
+So, if it's 11PM on the day you calibrated the telescope just add `23h` to
+your target co-ordinate (`5h16m`). This yields the new value `4h16m`, which
+is the corrected value for your fixed RA axis.
 
 Rotate your telescope to `4h16m` and, with the correct declination
 (`+45 degrees 59 minutes`) you should be (roughly) centred on **Capella**.
 
+**An example on days after calibration**
+
+If it's 11PM 10 days have elapsed since you calibrated the telescope add
+`23h` plus `4 * 10` to the target co-ordinate, i.e. `5h16m plus 23h40m`,
+which is `4h56m`.
+
+> The number of days you add is relative to the date and month of calibration,
+  i.e. the value's range is 0 to 359. Each year, on the calibration date
+  your daily offset returns to zero.
+
 In summary - we have a handy trick - the rapid location of
-objects using celestial coordinates without needing to adjust the RA axis!
+objects using celestial coordinates without adjusting the RA axis!
 
 ## Running the software utility
 You can of course, in your head, add the current time to your target
@@ -195,7 +214,8 @@ utility directly: -
     $ source ~/.venv/ra-converter/bin/activate
     $ python ra_converter.py
 
-Enter the RA co-ordinate of your object, and the code will use the current time
+Enter the days that have elapsed since you calibrated the telescope and
+RA co-ordinate of your object, and the code will use the current time
 and present you with the _adjusted_ co-ordinate that you need to use
 on your telescope.
 
