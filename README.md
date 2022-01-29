@@ -1,6 +1,9 @@
 # Fixed-axis location of Right Ascension (RA) objects
 
 [![lint](https://github.com/alanbchristie/ra-converter/actions/workflows/lint.yaml/badge.svg)](https://github.com/alanbchristie/ra-converter/actions/workflows/lint.yaml)
+![GitHub](https://img.shields.io/github/license/alanbchristie/ra-converter)
+
+![Platform](https://img.shields.io/badge/platform-micropython-lightgrey)
 
 A trick to rapidly locate celestial objects using a telescope and a fixed
 [Right Ascension] (RA) axis.
@@ -23,6 +26,11 @@ You will need: -
 
 > This trick is based on the fact that although the celestial co-ordinates
   do change over time (due to [Axial precession]) the change is negligible.
+
+An experimental real-time solution based on this technique that runs on the
+Raspberry Pi Pico can be found in the following Raspberry Pi Pico repository: -
+
+- https://github.com/alanbchristie/mp-pico-ra-calculator
 
 ## Background
 I have my first telescope, but I'm just learning.
