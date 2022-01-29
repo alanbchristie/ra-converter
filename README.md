@@ -3,8 +3,6 @@
 [![lint](https://github.com/alanbchristie/ra-converter/actions/workflows/lint.yaml/badge.svg)](https://github.com/alanbchristie/ra-converter/actions/workflows/lint.yaml)
 ![GitHub](https://img.shields.io/github/license/alanbchristie/ra-converter)
 
-![Platform](https://img.shields.io/badge/platform-micropython-lightgrey)
-
 A trick to rapidly locate celestial objects using a telescope and a fixed
 [Right Ascension] (RA) axis.
 
