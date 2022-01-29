@@ -1,6 +1,7 @@
 # Fixed-axis location of Right Ascension (RA) objects
 
 [![lint](https://github.com/alanbchristie/ra-converter/actions/workflows/lint.yaml/badge.svg)](https://github.com/alanbchristie/ra-converter/actions/workflows/lint.yaml)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/alanbchristie/ra-converter)
 ![GitHub](https://img.shields.io/github/license/alanbchristie/ra-converter)
 
 A trick to rapidly locate celestial objects using a telescope and a fixed
